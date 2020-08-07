@@ -117,82 +117,208 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"test.js":[function(require,module,exports) {
-// import string from "./CSS.js";
-var string = "\n.skin * { \n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n  }\n  .skin ::before,\n  .skin ::after {\n    box-sizing: border-box;\n  }\n  .skin {\n    position: relative;\n    background: #ffe600;\n    height: 50vh; \n  }\n  .nose {\n    /*\u9F3B\u5B50\u7531\u4E24\u90E8\u5206\u7EC4\u6210\u5706\u5F27+\u4E09\u89D2\u5F62*/\n    border: 10px solid red;\n    border-color: black transparent transparent;\n    width: 0px; /**content-box*/\n    height: 0px;\n    /* \u6C34\u5E73\u5C45\u4E2D */\n    /* position: absolute;\n    top: 200px;\n    left: 50%;\n    transform: translate(-50%, -50%); */\n    position: relative;\n    top: 145px; /*\u8DDD\u79BBtop200px*/\n    left: 50%;\n    margin-left: -10px; /*\u5DE6\u8FB9\u684610\u50CF\u7D20\uFF0C\u53F3\u8FB9\u684610\u50CF\u7D20\uFF0C\u6240\u4EE5div\u5BBD20px*/\n    z-index: 10;\n  }\n  @keyframes wave {\n    0% {\n      transform: rotate(0deg);\n    }\n    33% {\n      transform: rotate(6deg);\n    }\n    66% {\n      transform: rotate(-6deg);\n    }\n    100% {\n      transform: rotate(0deg);\n    }\n  }\n    animation: wave 300ms infinite;\n  }\n  .yuan {\n    width: 20px;\n    height: 6px;\n    position: absolute;\n    top: -16px;\n    left: -10px;\n    border-radius: 10px 10px 0 0;\n    background: black;\n  }\n  .eye {\n    border: 2px solid black;\n    width: 64px;\n    height: 64px;\n    position: absolute;\n    top: 100px;\n    left: 50%;\n    margin-left: -32px;\n    background: #2e2e2e;\n    border-radius: 50%;\n  }\n  .eye::before {\n    content: \"\";\n    display: block;\n    border: 3px solid black;\n    width: 30px;\n    height: 30px;\n    background: white;\n    border-radius: 50%;\n    position: relative;\n    left: 4px;\n    top: 2px;\n  }\n  .eye.left {\n    transform: translateX(-100px);\n  }\n  .eye.right {\n    transform: translateX(100px);\n  }\n  .mouth {\n    width: 200px;\n    height: 200px;\n    position: absolute;\n    top: 170px;\n    left: 50%;\n    margin-left: -100px;\n  }\n  .mouth .up {\n    position: relative;\n    top: -20px;\n    z-index: 1;\n  }\n  .mouth .up .lip {\n    border: 3px solid black;\n    width: 100px;\n    height: 30px;\n    border-top-color: transparent;\n    border-right-color: transparent;\n    background: #ffe600;\n    position: relative;\n    position: absolute;\n    left: 50%;\n    margin-left: -50px;\n  }\n  .mouth .up .lip.left {\n    /* position: relative;\n    left: 100px; */\n    border-radius: 0 0 0 50px;\n    transform: rotate(-15deg) translateX(-53px);\n  }\n  .mouth .up .lip.right {\n    /* position: relative;\n      left: 100px; */\n    border-radius: 0 0 50px 0;\n    transform: rotate(15deg) translateX(53px);\n  }\n  .mouth .up .lip::before {\n    content: \"\";\n    display: block;\n    width: 7px;\n    height: 30px;\n    position: absolute;\n    bottom: 0;\n    background-color: #ffe600;\n  }\n  .mouth .up .lip.left::before {\n    right: -6px;\n    /* left: 95px;\n      top: -5px; */\n  }\n  .mouth .up .lip.right::before {\n    left: -6px;\n    /* left: 95px;\n      top: -5px; */\n  }\n  .mouth .down {\n    width: 100%;\n    height: 180px;\n    position: absolute;\n    top: 5px;\n    overflow: hidden;\n  }\n  .mouth .down .yuan1 {\n    border: 3px solid black;\n    width: 150px;\n    height: 1000px;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    margin-left: -75px;\n    border-radius: 75px/300px;\n    background: #9b000a;\n    overflow: hidden;\n  }\n  .mouth .down .yuan1 .yuan2 {\n    width: 200px;\n    height: 300px;\n    background: #ff485f;\n    position: absolute;\n    bottom: -155px;\n    left: 50%; /*\u5B50\u5143\u7D20\u7684\u5DE6\u8FB9\u6846\u76F8\u5BF9\u7236\u5143\u7D20\u7684\u4F4D\u7F6E\u5DE6\u79FB50%\u7684\u7236\u5143\u7D20\u5BBD\u5EA6*/\n    margin-left: -100px;\n    border-radius: 100px;\n  }\n  .face {\n    position: absolute;\n    left: 50%;\n    top: 200px;\n    border: 3px solid black;\n    width: 88px;\n    height: 88px;\n    margin-left: -44px;\n    z-index: 3;\n    background: red;\n    border-radius: 50%;\n  }\n  .face > img {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n  }\n  .face.left > img {\n    transform: rotateY(180deg);\n    transform-origin: 0 0;\n  }\n  \n  .face.left {\n    transform: translateX(-180px);\n  }\n  .face.right {\n    transform: translateX(180px);\n  }\n";
-var demo = document.querySelector("#demo");
-var demo2 = document.querySelector("#demo2");
-var n = 0;
-var time = 100;
-var id; // demo.innerHTML = n;
-
-var player = {
-  init: function init() {
-    demo.innerText = string.substring(0, n);
-    demo2.innerHTML = string.substring(0, n);
-    player.play();
-    player.bindEvents();
-  },
-  bindEvents: function bindEvents() {
-    // //暂停按钮
-    // document.querySelector("#btnPause").onclick = player.pause;
-    // //播放按钮
-    // document.querySelector("#btnPlay").onclick = player.play;
-    // //慢速播放
-    // document.querySelector("#btnSlow").onclick = player.slow;
-    // //中速播放
-    // document.querySelector("#btnNormal").onclick = player.normal;
-    // //快速播放
-    // document.querySelector("#btnFast").onclick = player.fast; //这调用函数不要加括号fast（）
-    //上面的代码可以简写如下
-    var hashTable = {
-      "#btnPause": player.pause,
-      "#btnPlay": player.play,
-      "#btnSlow": player.slow,
-      "#btnNormal": player.normal,
-      "#btnFast": player.fast
-    };
-
-    for (var key in hashTable) {
-      document.querySelector(key).onclick = hashTable[key];
-    }
-  },
-  run: function run() {
-    n += 1;
-
-    if (n > string.length) {
-      window.clearInterval(id);
-      return;
-    }
-
-    console.log(n + ":" + string.substring(0, n));
-    demo.innerText = string.substring(0, n);
-    demo2.innerHTML = string.substring(0, n);
-    demo.scrollTop = 9999;
-  },
-  play: function play() {
-    id = setInterval(player.run, time);
-  },
-  pause: function pause() {
-    window.clearInterval(id);
-  },
-  slow: function slow() {
-    player.pause();
-    time = 300;
-    player.play();
-  },
-  normal: function normal() {
-    player.pause();
-    time = 100;
-    player.play();
-  },
-  fast: function fast() {
-    player.pause();
-    time = 0;
-    player.play();
-  }
-};
-player.init();
+})({"css.js":[function(require,module,exports) {
+//模块化
+// const string = `
+// .skin * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//   }
+//   .skin ::before,
+//   .skin ::after {
+//     box-sizing: border-box;
+//   }
+//   .skin {
+//     position: relative;
+//     background: #ffe600;
+//     height: 50vh;
+//   }
+//   .nose {
+//     /*鼻子由两部分组成圆弧+三角形*/
+//     border: 10px solid red;
+//     border-color: black transparent transparent;
+//     width: 0px; /**content-box*/
+//     height: 0px;
+//     /* 水平居中 */
+//     /* position: absolute;
+//     top: 200px;
+//     left: 50%;
+//     transform: translate(-50%, -50%); */
+//     position: relative;
+//     top: 145px; /*距离top200px*/
+//     left: 50%;
+//     margin-left: -10px; /*左边框10像素，右边框10像素，所以div宽20px*/
+//     z-index: 10;
+//   }
+//   @keyframes wave {
+//     0% {
+//       transform: rotate(0deg);
+//     }
+//     33% {
+//       transform: rotate(6deg);
+//     }
+//     66% {
+//       transform: rotate(-6deg);
+//     }
+//     100% {
+//       transform: rotate(0deg);
+//     }
+//   }
+//     animation: wave 300ms infinite;
+//   }
+//   .yuan {
+//     width: 20px;
+//     height: 6px;
+//     position: absolute;
+//     top: -16px;
+//     left: -10px;
+//     border-radius: 10px 10px 0 0;
+//     background: black;
+//   }
+//   .eye {
+//     border: 2px solid black;
+//     width: 64px;
+//     height: 64px;
+//     position: absolute;
+//     top: 100px;
+//     left: 50%;
+//     margin-left: -32px;
+//     background: #2e2e2e;
+//     border-radius: 50%;
+//   }
+//   .eye::before {
+//     content: "";
+//     display: block;
+//     border: 3px solid black;
+//     width: 30px;
+//     height: 30px;
+//     background: white;
+//     border-radius: 50%;
+//     position: relative;
+//     left: 4px;
+//     top: 2px;
+//   }
+//   .eye.left {
+//     transform: translateX(-100px);
+//   }
+//   .eye.right {
+//     transform: translateX(100px);
+//   }
+//   .mouth {
+//     width: 200px;
+//     height: 200px;
+//     position: absolute;
+//     top: 170px;
+//     left: 50%;
+//     margin-left: -100px;
+//   }
+//   .mouth .up {
+//     position: relative;
+//     top: -20px;
+//     z-index: 1;
+//   }
+//   .mouth .up .lip {
+//     border: 3px solid black;
+//     width: 100px;
+//     height: 30px;
+//     border-top-color: transparent;
+//     border-right-color: transparent;
+//     background: #ffe600;
+//     position: relative;
+//     position: absolute;
+//     left: 50%;
+//     margin-left: -50px;
+//   }
+//   .mouth .up .lip.left {
+//     /* position: relative;
+//     left: 100px; */
+//     border-radius: 0 0 0 50px;
+//     transform: rotate(-15deg) translateX(-53px);
+//   }
+//   .mouth .up .lip.right {
+//     /* position: relative;
+//       left: 100px; */
+//     border-radius: 0 0 50px 0;
+//     transform: rotate(15deg) translateX(53px);
+//   }
+//   .mouth .up .lip::before {
+//     content: "";
+//     display: block;
+//     width: 7px;
+//     height: 30px;
+//     position: absolute;
+//     bottom: 0;
+//     background-color: #ffe600;
+//   }
+//   .mouth .up .lip.left::before {
+//     right: -6px;
+//     /* left: 95px;
+//       top: -5px; */
+//   }
+//   .mouth .up .lip.right::before {
+//     left: -6px;
+//     /* left: 95px;
+//       top: -5px; */
+//   }
+//   .mouth .down {
+//     width: 100%;
+//     height: 180px;
+//     position: absolute;
+//     top: 5px;
+//     overflow: hidden;
+//   }
+//   .mouth .down .yuan1 {
+//     border: 3px solid black;
+//     width: 150px;
+//     height: 1000px;
+//     position: absolute;
+//     bottom: 0;
+//     left: 50%;
+//     margin-left: -75px;
+//     border-radius: 75px/300px;
+//     background: #9b000a;
+//     overflow: hidden;
+//   }
+//   .mouth .down .yuan1 .yuan2 {
+//     width: 200px;
+//     height: 300px;
+//     background: #ff485f;
+//     position: absolute;
+//     bottom: -155px;
+//     left: 50%; /*子元素的左边框相对父元素的位置左移50%的父元素宽度*/
+//     margin-left: -100px;
+//     border-radius: 100px;
+//   }
+//   .face {
+//     position: absolute;
+//     left: 50%;
+//     top: 200px;
+//     border: 3px solid black;
+//     width: 88px;
+//     height: 88px;
+//     margin-left: -44px;
+//     z-index: 3;
+//     background: red;
+//     border-radius: 50%;
+//   }
+//   .face > img {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//   }
+//   .face.left > img {
+//     transform: rotateY(180deg);
+//     transform-origin: 0 0;
+//   }
+//   .face.left {
+//     transform: translateX(-180px);
+//   }
+//   .face.right {
+//     transform: translateX(180px);
+//   }
+// `;
+// export default string;
 },{}],"C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -397,5 +523,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","test.js"], null)
-//# sourceMappingURL=/test.e98b79dd.js.map
+},{}]},{},["C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","css.js"], null)
+//# sourceMappingURL=/css.16d824bf.js.map
